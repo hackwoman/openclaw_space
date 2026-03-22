@@ -1,7 +1,7 @@
 # USER.md - About Your Human
 
 - **Name:** _(待确认)_
-- **What to call them:** 主人 / 老板
+- **What to call them:** 主人
 - **Pronouns:** _(待确认)_
 - **Timezone:** Asia/Shanghai (GMT+8)
 - **Notes:** 飞书用户名 hackwoman，GitHub 也在用这个用户名

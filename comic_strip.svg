@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="500" fill="#F5F5F5"/>
+  
+  <!-- Title -->
+  <text x="300" y="30" text-anchor="middle" fill="#333" font-size="24" font-weight="bold">OpenClaw 的一天</text>
+  
+  <!-- Panel 1 - Morning -->
+  <rect x="20" y="50" width="170" height="200" fill="white" stroke="#333" stroke-width="3"/>
+  <rect x="20" y="50" width="170" height="30" fill="#FF6B6B"/>
+  <text x="105" y="70" text-anchor="middle" fill="white" font-size="14" font-weight="bold">早上 8:00</text>
+  
+  <!-- Sun -->
+  <circle cx="160" cy="90" r="20" fill="#FFD700"/>
+  <g stroke="#FFD700" stroke-width="2">
+    <line x1="160" y1="60" x2="160" y2="50"/>
+    <line x1="180" y1="70" x2="190" y2="60"/>
+    <line x1="190" y1="90" x2="200" y2="90"/>
+    <line x1="180" y1="110" x2="190" y2="120"/>
+  </g>
+  
+  <!-- Sleeping OpenClaw -->
+  <ellipse cx="80" cy="170" rx="40" ry="50" fill="#FF6B6B"/>
+  <ellipse cx="80" cy="180" rx="30" ry="35" fill="#FFB6B6"/>
+  <path d="M60 150 Q80 145 100 150" stroke="#333" stroke-width="2" fill="none"/>
+  <path d="M60 150 L55 145 M100 150 L105 145" stroke="#333" stroke-width="2"/>
+  <text x="80" y="155" text-anchor="middle" fill="#333" font-size="12">💤</text>
+  <text x="100" y="140" fill="#333" font-size="10">Zzz...</text>
+  
+  <!-- Panel 2 - Work -->
+  <rect x="210" y="50" width="170" height="200" fill="white" stroke="#333" stroke-width="3"/>
+  <rect x="210" y="50" width="170" height="30" fill="#00CEC9"/>
+  <text x="295" y="70" text-anchor="middle" fill="white" font-size="14" font-weight="bold">工作中 💻</text>
+  
+  <!-- Computer -->
+  <rect x="250" y="130" width="80" height="50" fill="#333" rx="5"/>
+  <rect x="255" y="135" width="70" height="40" fill="#00B894"/>
+  <rect x="280" y="180" width="20" height="20" fill="#666"/>
+  <rect x="260" y="200" width="60" height="5" fill="#666"/>
+  
+  <!-- OpenClaw at computer -->
+  <ellipse cx="295" cy="170" rx="25" ry="30" fill="#FF6B6B"/>
+  <circle cx="285" cy="155" r="8" fill="white" stroke="#333"/>
+  <circle cx="305" cy="155" r="8" fill="white" stroke="#333"/>
+  <circle cx="286" cy="156" r="4" fill="#333"/>
+  <circle cx="306" cy="156" r="4" fill="#333"/>
+  <path d="M285 170 Q295 178 305 170" stroke="#333" stroke-width="2" fill="none"/>
+  
+  <!-- Panel 3 - Success -->
+  <rect x="400" y="50" width="170" height="200" fill="white" stroke="#333" stroke-width="3"/>
+  <rect x="400" y="50" width="170" height="30" fill="#FFD700"/>
+  <text x="485" y="70" text-anchor="middle" fill="#333" font-size="14" font-weight="bold">任务完成！🎉</text>
+  
+  <!-- Happy OpenClaw -->
+  <ellipse cx="485" cy="160" rx="35" ry="45" fill="#FF6B6B"/>
+  <ellipse cx="485" cy="170" rx="25" ry="30" fill="#FFB6B6"/>
+  <circle cx="470" cy="145" r="10" fill="white" stroke="#333"/>
+  <circle cx="500" cy="145" r="10" fill="white" stroke="#333"/>
+  <circle cx="472" cy="147" r="5" fill="#333"/>
+  <circle cx="502" cy="147" r="5" fill="#333"/>
+  <path d="M465 165 Q485 185 505 165" stroke="#333" stroke-width="3" fill="none"/>
+  
+  <!-- Sparkles -->
+  <text x="450" y="120" fill="#FFD700" font-size="16">✨</text>
+  <text x="510" y="130" fill="#FFD700" font-size="14">✨</text>
+  <text x="440" y="190" fill="#FFD700" font-size="12">⭐</text>
+  
+  <!-- Panel 4 - Bottom left -->
+  <rect x="20" y="270" width="170" height="200" fill="white" stroke="#333" stroke-width="3"/>
+  <rect x="20" y="270" width="170" height="30" fill="#A29BFE"/>
+  <text x="105" y="290" text-anchor="middle" fill="white" font-size="14" font-weight="bold">学习时间 📚</text>
+  
+  <!-- Books -->
+  <rect x="40" y="350" width="30" height="80" fill="#FF6B6B" stroke="#333"/>
+  <rect x="75" y="340" width="30" height="90" fill="#00CEC9" stroke="#333"/>
+  <rect x="110" y="360" width="30" height="70" fill="#FFD700" stroke="#333"/>
+  
+  <!-- OpenClaw reading -->
+  <ellipse cx="140" cy="380" rx="25" ry="30" fill="#FF6B6B"/>
+  <circle cx="130" cy="365" r="8" fill="white" stroke="#333"/>
+  <circle cx="150" cy="365" r="8" fill="white" stroke="#333"/>
+  <circle cx="131" cy="366" r="4" fill="#333"/>
+  <circle cx="151" cy="366" r="4" fill="#333"/>
+  <path d="M130 380 Q140 388 150 380" stroke="#333" stroke-width="2" fill="none"/>
+  
+  <!-- Panel 5 - Bottom middle -->
+  <rect x="210" y="270" width="170" height="200" fill="white" stroke="#333" stroke-width="3"/>
+  <rect x="210" y="270" width="170" height="30" fill="#00B894"/>
+  <text x="295" y="290" text-anchor="middle" fill="white" font-size="14" font-weight="bold">帮助用户 🤝</text>
+  
+  <!-- User and OpenClaw -->
+  <ellipse cx="260" cy="380" rx="20" ry="25" fill="#74B9FF"/>
+  <circle cx="255" cy="370" r="6" fill="white"/>
+  <circle cx="265" cy="370" r="6" fill="white"/>
+  <circle cx="256" cy="371" r="3" fill="#333"/>
+  <circle cx="266" cy="371" r="3" fill="#333"/>
+  <path d="M253 383 Q260 388 267 383" stroke="#333" stroke-width="2" fill="none"/>
+  
+  <ellipse cx="330" cy="380" rx="25" ry="30" fill="#FF6B6B"/>
+  <circle cx="320" cy="365" r="8" fill="white" stroke="#333"/>
+  <circle cx="340" cy="365" r="8" fill="white" stroke="#333"/>
+  <circle cx="321" cy="366" r="4" fill="#333"/>
+  <circle cx="341" cy="366" r="4" fill="#333"/>
+  <path d="M320 380 Q330 390 340 380" stroke="#333" stroke-width="2" fill="none"/>
+  
+  <!-- Heart -->
+  <text x="295" y="350" text-anchor="middle" fill="#FF6B6B" font-size="20">❤️</text>
+  
+  <!-- Panel 6 - Bottom right -->
+  <rect x="400" y="270" width="170" height="200" fill="white" stroke="#333" stroke-width="3"/>
+  <rect x="400" y="270" width="170" height="30" fill="#636E72"/>
+  <text x="485" y="290" text-anchor="middle" fill="white" font-size="14" font-weight="bold">晚安 🌙</text>
+  
+  <!-- Moon and stars -->
+  <circle cx="460" cy="330" r="25" fill="#FFD700"/>
+  <circle cx="470" cy="325" r="20" fill="#636E72"/>
+  <text x="510" y="320" fill="#FFD700" font-size="12">⭐</text>
+  <text x="430" y="350" fill="#FFD700" font-size="10">✨</text>
+  <text x="520" y="360" fill="#FFD700" font-size="8">⭐</text>
+  
+  <!-- Sleeping OpenClaw -->
+  <ellipse cx="485" cy="420" rx="35" ry="45" fill="#FF6B6B"/>
+  <ellipse cx="485" cy="430" rx="25" ry="30" fill="#FFB6B6"/>
+  <path d="M465 400 Q485 395 505 400" stroke="#333" stroke-width="2" fill="none"/>
+  <text x="520" y="400" fill="#333" font-size="14">Zzz</text>
+  <text x="530" y="385" fill="#333" font-size="12">z</text>
+  
+  <!-- Footer -->
+  <text x="300" y="490" text-anchor="middle" fill="#666" font-size="12">OpenClaw - 你的 AI 助手 🦞</text>
+</svg>

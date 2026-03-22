@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="500" height="300" fill="#f8f9fa" rx="15"/>
+  <text x="250" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#333">📊 上周A股主要指数表现 (3/16-3/22)</text>
+  <line x1="30" y1="250" x2="480" y2="250" stroke="#999" stroke-width="2"/>
+  
+  <rect x="41" y="154" width="50" height="96" fill="#ff6b6b" rx="5"/>
+  <text x="66" y="270" text-anchor="middle" font-size="12" fill="#333">上证</text>
+  <text x="66" y="149" text-anchor="middle" font-size="11" fill="#333">1.2</text>
+  <rect x="132" y="314" width="50" height="-64" fill="#00cec9" rx="5"/>
+  <text x="157" y="270" text-anchor="middle" font-size="12" fill="#333">深证</text>
+  <text x="157" y="309" text-anchor="middle" font-size="11" fill="#333">-0.8</text>
+  <rect x="223" y="50" width="50" height="200" fill="#ffd700" rx="5"/>
+  <text x="248" y="270" text-anchor="middle" font-size="12" fill="#333">创业板</text>
+  <text x="248" y="45" text-anchor="middle" font-size="11" fill="#333">2.5</text>
+  <rect x="314" y="354" width="50" height="-104" fill="#a29bfe" rx="5"/>
+  <text x="339" y="270" text-anchor="middle" font-size="12" fill="#333">科创50</text>
+  <text x="339" y="349" text-anchor="middle" font-size="11" fill="#333">-1.3</text>
+  <rect x="405" y="202" width="50" height="48" fill="#fd79a8" rx="5"/>
+  <text x="430" y="270" text-anchor="middle" font-size="12" fill="#333">沪深300</text>
+  <text x="430" y="197" text-anchor="middle" font-size="11" fill="#333">0.6</text>
+</svg>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Paper background -->
+  <rect width="400" height="400" fill="#FFF8E7"/>
+  
+  <!-- Paper texture lines -->
+  <g stroke="#E8E0D0" stroke-width="0.5" opacity="0.5">
+    <line x1="0" y1="50" x2="400" y2="50"/>
+    <line x1="0" y1="100" x2="400" y2="100"/>
+    <line x1="0" y1="150" x2="400" y2="150"/>
+    <line x1="0" y1="200" x2="400" y2="200"/>
+    <line x1="0" y1="250" x2="400" y2="250"/>
+    <line x1="0" y1="300" x2="400" y2="300"/>
+    <line x1="0" y1="350" x2="400" y2="350"/>
+  </g>
+  
+  <!-- Title -->
+  <text x="200" y="35" text-anchor="middle" fill="#333" font-size="18" font-family="cursive" font-style="italic">Sketch Study - OpenClaw</text>
+  
+  <!-- Pencil sketch style - rough lines -->
+  <g fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Body outline (sketchy) -->
+    <path d="M150 180 Q145 220 150 260 Q160 300 200 310 Q240 300 250 260 Q255 220 250 180" stroke-dasharray="2,1"/>
+    <path d="M152 182 Q148 222 152 262 Q162 302 200 312 Q238 302 248 262 Q253 222 248 182" stroke-dasharray="1,2"/>
+    
+    <!-- Head -->
+    <ellipse cx="200" cy="150" rx="60" ry="50" stroke-dasharray="3,1"/>
+    <ellipse cx="200" cy="150" rx="58" ry="48" stroke-dasharray="2,2"/>
+    
+    <!-- Eyes (sketchy) -->
+    <ellipse cx="175" cy="140" rx="15" ry="18" stroke-dasharray="2,1"/>
+    <ellipse cx="225" cy="140" rx="15" ry="18" stroke-dasharray="2,1"/>
+    <circle cx="178" cy="142" r="6" fill="#333"/>
+    <circle cx="228" cy="142" r="6" fill="#333"/>
+    
+    <!-- Eyebrows (pencil strokes) -->
+    <path d="M155 118 Q175 112 195 118" stroke-width="3"/>
+    <path d="M205 118 Q225 112 245 118" stroke-width="3"/>
+    
+    <!-- Nose -->
+    <path d="M195 155 Q200 165 205 155"/>
+    
+    <!-- Smile -->
+    <path d="M175 175 Q200 195 225 175" stroke-width="3"/>
+    
+    <!-- Antennae (sketchy) -->
+    <path d="M160 100 Q150 70 140 50" stroke-width="3"/>
+    <path d="M240 100 Q250 70 260 50" stroke-width="3"/>
+    <circle cx="140" cy="45" r="8" fill="#FFD700" stroke="#333"/>
+    <circle cx="260" cy="45" r="8" fill="#FFD700" stroke="#333"/>
+    
+    <!-- Claws (sketchy) -->
+    <path d="M120 200 Q90 220 80 260 Q75 290 90 310" stroke-width="3"/>
+    <path d="M118 202 Q88 222 78 262 Q73 292 88 312" stroke-width="2"/>
+    <path d="M280 200 Q310 220 320 260 Q325 290 310 310" stroke-width="3"/>
+    <path d="M278 202 Q308 222 318 262 Q323 292 308 312" stroke-width="2"/>
+    
+    <!-- Legs -->
+    <path d="M170 300 L155 360" stroke-width="3"/>
+    <path d="M185 305 L175 360" stroke-width="3"/>
+    <path d="M215 305 L225 360" stroke-width="3"/>
+    <path d="M230 300 L245 360" stroke-width="3"/>
+  </g>
+  
+  <!-- Pencil shading effect -->
+  <g fill="#333" opacity="0.1">
+    <ellipse cx="180" cy="250" rx="30" ry="40"/>
+    <ellipse cx="220" cy="250" rx="30" ry="40"/>
+    <ellipse cx="200" cy="150" rx="40" ry="35"/>
+  </g>
+  
+  <!-- Signature -->
+  <text x="320" y="380" fill="#666" font-size="12" font-family="cursive" font-style="italic">by OpenClaw AI</text>
+  
+  <!-- Pencil icon -->
+  <g transform="translate(350, 350) rotate(-45)">
+    <rect x="0" y="0" width="8" height="40" fill="#FFD700" stroke="#333"/>
+    <polygon points="0,40 8,40 4,50" fill="#FFB6C1" stroke="#333"/>
+    <rect x="0" y="0" width="8" height="5" fill="#FF6B6B"/>
+  </g>
+</svg>

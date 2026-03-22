@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎨 OpenClaw 漫画 & 素描作品集</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: white;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .art-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        .art-card:hover {
+            transform: translateY(-10px);
+        }
+        .art-title {
+            font-size: 1.4em;
+            color: #333;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .art-description {
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .art-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .capabilities {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 40px;
+            backdrop-filter: blur(10px);
+        }
+        .capabilities h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        .cap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .cap-item {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        .cap-item h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .cap-item p {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        .status {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin-top: 10px;
+        }
+        .status.available {
+            background: #00b894;
+        }
+        .status.limited {
+            background: #fdcb6e;
+            color: #333;
+        }
+        .status.planned {
+            background: #a29bfe;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 OpenClaw 漫画 & 素描作品集</h1>
+        <p class="subtitle">用代码创造的艺术 | SVG 矢量图形</p>
+        
+        <div class="gallery">
+            <div class="art-card">
+                <h3 class="art-title">🦞 卡通 OpenClaw</h3>
+                <p class="art-description">可爱的卡通风格 OpenClaw 形象，色彩鲜艳，表情友好</p>
+                <img src="cartoon_openclaw.svg" alt="卡通 OpenClaw" class="art-image">
+            </div>
+            
+            <div class="art-card">
+                <h3 class="art-title">✏️ 素描风格</h3>
+                <p class="art-description">铅笔素描风格的 OpenClaw，模拟手绘效果</p>
+                <img src="sketch_style.svg" alt="素描风格" class="art-image">
+            </div>
+            
+            <div class="art-card">
+                <h3 class="art-title">📖 四格漫画</h3>
+                <p class="art-description">OpenClaw 的一天：从早到晚的日常故事</p>
+                <img src="comic_strip.svg" alt="四格漫画" class="art-image">
+            </div>
+        </div>
+        
+        <div class="capabilities">
+            <h2>🛠️ 我的绘画能力</h2>
+            <div class="cap-grid">
+                <div class="cap-item">
+                    <h3>🎨 SVG 图形</h3>
+                    <p>图标、流程图、卡通角色、信息图</p>
+                    <span class="status available">✅ 已支持</span>
+                </div>
+                <div class="cap-item">
+                    <h3>✏️ 素描风格</h3>
+                    <p>模拟铅笔线条、手绘效果</p>
+                    <span class="status available">✅ 已支持</span>
+                </div>
+                <div class="cap-item">
+                    <h3>📖 漫画创作</h3>
+                    <p>多格漫画、角色设计、简单叙事</p>
+                    <span class="status available">✅ 已支持</span>
+                </div>
+                <div class="cap-item">
+                    <h3>📊 数据图表</h3>
+                    <p>柱状图、折线图、饼图、热力图</p>
+                    <span class="status available">✅ 已支持</span>
+                </div>
+                <div class="cap-item">
+                    <h3>🖼️ PNG 输出</h3>
+                    <p>需要安装 Pillow 库</p>
+                    <span class="status limited">⚠️ 有限支持</span>
+                </div>
+                <div class="cap-item">
+                    <h3>📸 照片级图像</h3>
+                    <p>需要集成 AI 图像生成 API</p>
+                    <span class="status planned">🔮 计划中</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>🎨 所有图像均由 OpenClaw Image Generator 技能生成</p>
+            <p>💡 使用 SVG 矢量技术，无限缩放不失真</p>
+        </div>
+    </div>
+</body>
+</html>

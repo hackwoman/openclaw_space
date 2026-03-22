@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333"/>
+    </marker>
+  </defs>
+  <rect width="600" height="500" fill="#f8f9fa" rx="15"/>
+  <text x="300" y="40" text-anchor="middle" font-size="20" font-weight="bold" fill="#333">🔥 上周热门板块</text>
+  
+  <rect x="225" y="80" width="150" height="50" rx="8" fill="#00b894" stroke="#333" stroke-width="2"/>
+  <text x="300" y="110" text-anchor="middle" fill="white" font-size="14" font-weight="bold">AI人工智能 ↑5.2%</text>
+  <line x1="300" y1="130" x2="300" y2="150" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="225" y="160" width="150" height="50" rx="8" fill="#00cec9" stroke="#333" stroke-width="2"/>
+  <text x="300" y="190" text-anchor="middle" fill="white" font-size="14" font-weight="bold">新能源 ↑3.8%</text>
+  <line x1="300" y1="210" x2="300" y2="230" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="225" y="240" width="150" height="50" rx="8" fill="#0984e3" stroke="#333" stroke-width="2"/>
+  <text x="300" y="270" text-anchor="middle" fill="white" font-size="14" font-weight="bold">半导体 ↑2.1%</text>
+  <line x1="300" y1="290" x2="300" y2="310" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="225" y="320" width="150" height="50" rx="8" fill="#d63031" stroke="#333" stroke-width="2"/>
+  <text x="300" y="350" text-anchor="middle" fill="white" font-size="14" font-weight="bold">医药 ↓1.5%</text>
+  <line x1="300" y1="370" x2="300" y2="390" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="225" y="400" width="150" height="50" rx="8" fill="#636e72" stroke="#333" stroke-width="2"/>
+  <text x="300" y="430" text-anchor="middle" fill="white" font-size="14" font-weight="bold">地产 ↓2.3%</text>
+</svg>

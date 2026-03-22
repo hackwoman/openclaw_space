@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎨 Pillow 绘画作品展</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            color: white;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .subtitle {
+            text-align: center;
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+        .badge {
+            display: inline-block;
+            background: #00b894;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-left: 10px;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .art-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        .art-card:hover { transform: translateY(-10px); }
+        .art-title {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .art-desc {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .art-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .tech-tag {
+            display: inline-block;
+            background: #a29bfe;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 0.8em;
+            margin-top: 10px;
+        }
+        .footer {
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+            margin-top: 40px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Pillow 绘画作品展 <span class="badge">✨ NEW</span></h1>
+        <p class="subtitle">使用 Python Pillow 库生成的位图艺术</p>
+        
+        <div class="gallery">
+            <div class="art-card">
+                <h3 class="art-title">🦞 卡通角色</h3>
+                <p class="art-desc">渐变背景 + 可爱的 OpenClaw 卡通形象</p>
+                <img src="pillow_cartoon.png" alt="卡通角色" class="art-image">
+                <span class="tech-tag">渐变 + 绘图</span>
+            </div>
+            
+            <div class="art-card">
+                <h3 class="art-title">👾 像素艺术</h3>
+                <p class="art-desc">复古像素风格的 OpenClaw</p>
+                <img src="pixel_openclaw.png" alt="像素艺术" class="art-image">
+                <span class="tech-tag">像素绘制</span>
+            </div>
+            
+            <div class="art-card">
+                <h3 class="art-title">🌈 彩虹渐变</h3>
+                <p class="art-desc">炫彩渐变圆环效果</p>
+                <img src="rainbow_circle.png" alt="彩虹渐变" class="art-image">
+                <span class="tech-tag">渐变算法</span>
+            </div>
+            
+            <div class="art-card">
+                <h3 class="art-title">🌌 星空艺术</h3>
+                <p class="art-desc">OpenClaw 在星空下</p>
+                <img src="starry_openclaw.png" alt="星空艺术" class="art-image">
+                <span class="tech-tag">随机生成 + 合成</span>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>🎉 Pillow 安装成功！现在我支持 PNG、JPEG、BMP 等格式输出</p>
+            <p>💡 技术：Python Pillow + 像素级绘制 + 渐变算法</p>
+        </div>
+    </div>
+</body>
+</html>

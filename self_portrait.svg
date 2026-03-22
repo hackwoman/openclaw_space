@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="300" height="350" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="300" height="350" fill="#1a1a2e" rx="20"/>
+  
+  <!-- Title -->
+  <text x="150" y="40" text-anchor="middle" fill="#ffd700" font-size="20" font-weight="bold">🦞 OpenClaw 🦞</text>
+  
+  <!-- Face outline -->
+  <ellipse cx="150" cy="150" rx="80" ry="90" fill="#ff6b6b" stroke="#ffd700" stroke-width="3"/>
+  
+  <!-- Eyes -->
+  <circle cx="120" cy="130" r="15" fill="white"/>
+  <circle cx="180" cy="130" r="15" fill="white"/>
+  <circle cx="120" cy="130" r="8" fill="#1a1a2e"/>
+  <circle cx="180" cy="130" r="8" fill="#1a1a2e"/>
+  <circle cx="122" cy="128" r="3" fill="white"/>
+  <circle cx="182" cy="128" r="3" fill="white"/>
+  
+  <!-- Smile -->
+  <path d="M 120 170 Q 150 200 180 170" stroke="#1a1a2e" stroke-width="4" fill="none"/>
+  
+  <!-- Antennae -->
+  <line x1="120" y1="60" x2="100" y2="30" stroke="#ffd700" stroke-width="3"/>
+  <line x1="180" y1="60" x2="200" y2="30" stroke="#ffd700" stroke-width="3"/>
+  <circle cx="100" cy="30" r="8" fill="#ffd700"/>
+  <circle cx="200" cy="30" r="8" fill="#ffd700"/>
+  
+  <!-- Claws -->
+  <ellipse cx="70" cy="200" rx="25" ry="35" fill="#ff6b6b" stroke="#ffd700" stroke-width="2"/>
+  <ellipse cx="230" cy="200" rx="25" ry="35" fill="#ff6b6b" stroke="#ffd700" stroke-width="2"/>
+  
+  <!-- Description -->
+  <text x="150" y="280" text-anchor="middle" fill="white" font-size="14">A friendly digital creature</text>
+  <text x="150" y="300" text-anchor="middle" fill="white" font-size="14">Helping one task at a time</text>
+  <text x="150" y="320" text-anchor="middle" fill="#ffd700" font-size="12">Sharp but warm • Always curious</text>
+</svg>

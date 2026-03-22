@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500" height="450" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="500" height="450" fill="#0d1117" rx="20"/>
+  
+  <!-- Title -->
+  <text x="250" y="40" text-anchor="middle" fill="#58a6ff" font-size="22" font-weight="bold">🎯 上周投资策略回顾</text>
+  
+  <!-- Strategy Box 1 -->
+  <rect x="30" y="60" width="210" height="120" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="135" y="85" text-anchor="middle" fill="#3fb950" font-size="14" font-weight="bold">✅ 正确策略</text>
+  <text x="45" y="110" fill="white" font-size="11">• AI算力板块持续布局</text>
+  <text x="45" y="130" fill="white" font-size="11">• 高股息防御配置</text>
+  <text x="45" y="150" fill="white" font-size="11">• 半导体国产替代</text>
+  <text x="45" y="170" fill="white" font-size="11">• 逢低吸纳新能源</text>
+  
+  <!-- Strategy Box 2 -->
+  <rect x="260" y="60" width="210" height="120" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="365" y="85" text-anchor="middle" fill="#f85149" font-size="14" font-weight="bold">❌ 避免策略</text>
+  <text x="275" y="110" fill="white" font-size="11">• 追高地产板块</text>
+  <text x="275" y="130" fill="white" font-size="11">• 重仓单一赛道</text>
+  <text x="275" y="150" fill="white" font-size="11">• 忽视止损纪律</text>
+  <text x="275" y="170" fill="white" font-size="11">• 频繁短线操作</text>
+  
+  <!-- Performance -->
+  <text x="250" y="210" text-anchor="middle" fill="#ffd700" font-size="16" font-weight="bold">📊 策略收益对比</text>
+  
+  <!-- Bars -->
+  <rect x="80" y="240" width="80" height="100" rx="5" fill="#30363d"/>
+  <rect x="80" y="280" width="80" height="60" rx="5" fill="#238636"/>
+  <text x="120" y="350" text-anchor="middle" fill="white" font-size="12">AI策略</text>
+  <text x="120" y="270" text-anchor="middle" fill="#3fb950" font-size="12">+8.5%</text>
+  
+  <rect x="210" y="240" width="80" height="100" rx="5" fill="#30363d"/>
+  <rect x="210" y="290" width="80" height="50" rx="5" fill="#1f6feb"/>
+  <text x="250" y="350" text-anchor="middle" fill="white" font-size="12">指数策略</text>
+  <text x="250" y="280" text-anchor="middle" fill="#58a6ff" font-size="12">+2.1%</text>
+  
+  <rect x="340" y="240" width="80" height="100" rx="5" fill="#30363d"/>
+  <rect x="340" y="310" width="80" height="30" rx="5" fill="#f85149"/>
+  <text x="380" y="350" text-anchor="middle" fill="white" font-size="12">传统策略</text>
+  <text x="380" y="300" text-anchor="middle" fill="#f85149" font-size="12">-1.2%</text>
+  
+  <!-- Tips -->
+  <rect x="30" y="380" width="440" height="50" rx="10" fill="#161b22" stroke="#ffd700" stroke-width="2"/>
+  <text x="250" y="400" text-anchor="middle" fill="#ffd700" font-size="12" font-weight="bold">💡 下周关注</text>
+  <text x="250" y="420" text-anchor="middle" fill="white" font-size="11">美联储议息会议 | 一季报披露期 | AI大会催化 | 关注量能变化</text>
+</svg>

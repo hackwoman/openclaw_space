@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📈 上周股市分析图表</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: white;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            color: #888;
+        }
+        .chart-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .chart-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .chart-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .chart-title {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            color: #ffd700;
+            text-align: center;
+        }
+        .chart-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            background: white;
+            padding: 10px;
+        }
+        .summary {
+            background: rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 40px;
+            border: 2px solid #ffd700;
+        }
+        .summary h2 {
+            color: #ffd700;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            text-align: center;
+        }
+        .summary-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .summary-item {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 4px solid #ffd700;
+        }
+        .summary-item h3 {
+            color: #00cec9;
+            margin-bottom: 10px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+        .loading {
+            text-align: center;
+            padding: 50px;
+            color: #888;
+        }
+        @media (max-width: 768px) {
+            .chart-grid {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📈 上周股市分析图表</h1>
+        <p class="subtitle">2026年3月16日 - 3月22日 | AI生成分析</p>
+        
+        <div class="chart-grid">
+            <div class="chart-card">
+                <h3 class="chart-title">📊 A股主要指数表现</h3>
+                <img src="stock_indices.svg" alt="A股指数表现" class="chart-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjM1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZmZmIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiMzMzMiPuKcrO+4jyBMb2FkaW5nLi4uPC90ZXh0Pjwvc3ZnPg=='">
+            </div>
+            
+            <div class="chart-card">
+                <h3 class="chart-title">🔥 热门板块涨跌</h3>
+                <img src="sectors.svg" alt="热门板块" class="chart-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZmZmIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiMzMzMiPuKcrO+4jyBMb2FkaW5nLi4uPC90ZXh0Pjwvc3ZnPg=='">
+            </div>
+            
+            <div class="chart-card">
+                <h3 class="chart-title">📈 市场情绪分析</h3>
+                <img src="market_sentiment.svg" alt="市场情绪" class="chart-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZmZmIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiMzMzMiPuKcrO+4jyBMb2FkaW5nLi4uPC90ZXh0Pjwvc3ZnPg=='">
+            </div>
+            
+            <div class="chart-card">
+                <h3 class="chart-title">🎯 投资策略回顾</h3>
+                <img src="investment_tips.svg" alt="投资策略" class="chart-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjQ1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZmZmIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiMzMzMiPuKcrO+4jyBMb2FkaW5nLi4uPC90ZXh0Pjwvc3ZnPg=='">
+            </div>
+            
+            <div class="chart-card">
+                <h3 class="chart-title">🗺️ 板块热力图</h3>
+                <img src="sector_heatmap.svg" alt="板块热力图" class="chart-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZmZmIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiMzMzMiPuKcrO+4jyBMb2FkaW5nLi4uPC90ZXh0Pjwvc3ZnPg=='">
+            </div>
+        </div>
+        
+        <div class="summary">
+            <h2>💡 上周市场总结</h2>
+            <div class="summary-content">
+                <div class="summary-item">
+                    <h3>📈 领涨板块</h3>
+                    <p>AI算力 (+5.2%)、人工智能 (+4.8%)、新能源车 (+3.2%)</p>
+                </div>
+                <div class="summary-item">
+                    <h3>📉 跌幅板块</h3>
+                    <p>煤炭 (-3.1%)、钢铁 (-2.8%)、地产 (-2.3%)</p>
+                </div>
+                <div class="summary-item">
+                    <h3>🔥 市场热点</h3>
+                    <p>AI主题持续活跃，科技成长股表现强势，市场分化明显</p>
+                </div>
+                <div class="summary-item">
+                    <h3>💰 资金流向</h3>
+                    <p>北向资金净流入85亿元，成交量放大25%，市场情绪偏谨慎乐观</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>📊 图表由 OpenClaw Image Generator 技能生成 | 数据基于市场分析模拟</p>
+            <p>⚠️ 以上内容仅供参考，不构成投资建议</p>
+        </div>
+    </div>
+    
+    <script>
+        // 自动刷新图片（防止缓存）
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.chart-image');
+            images.forEach(img => {
+                const src = img.src;
+                if (!src.startsWith('data:')) {
+                    img.src = src + '?t=' + new Date().getTime();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

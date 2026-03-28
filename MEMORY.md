@@ -24,3 +24,22 @@
 - Gateway 端口：18789，loopback 绑定
 - 主模型：openrouter/xiaomi/mimo-v2-pro（推理能力）
 - 备用模型：openrouter/xiaomi/mimo-v2-flash（轻量快速）
+
+## 监控 ETL 平台项目
+
+- GitHub 仓库：hackwoman/monitoring-etl（HTTPS 克隆）
+- 云服务器：阿里云 ECS 47.93.61.196 (2C 4G 40GB)
+- 登录：lily / Temp2026!（SSH 密码登录已开启）
+- 镜像加速：docker.1ms.run（阿里云默认镜像源不可用）
+- CMDB 数据库：docker compose down -v 会丢失，需手动重建
+- 前端：React 构建有 Vite tree-shaking 问题，临时用静态 HTML 兜底
+- 模拟器：python3 demo/simulator/main.py --rps 2 --log-dir logs
+- 项目运行状态：http://47.93.61.196:3000（前端）、:8000（API）
+
+## 主人偏好
+
+- 重视架构设计的完整性和前瞻性
+- 不急于交付速度，重质量
+- 告警理念：业务风险度驱动，不以 IT 严重度为准
+- CMDB 实例应从数据自动生成（非预置）
+- 数据要走完整管道（采集→ETL→存储），不直接写库

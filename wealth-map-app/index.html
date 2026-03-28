@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>财富地图 300万 · 资产配置计算器</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --card: #1a1d27;
+    --card-hover: #222632;
+    --border: #2a2e3a;
+    --text: #e4e6eb;
+    --text-dim: #8b8fa3;
+    --accent: #6c5ce7;
+    --accent-light: #a29bfe;
+    --green: #00b894;
+    --red: #fd7272;
+    --orange: #fdcb6e;
+    --blue: #74b9ff;
+    --pink: #fd79a8;
+    --teal: #81ecec;
+    --radius: 12px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 24px 16px; }
+  
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 32px;
+    padding: 24px;
+    background: linear-gradient(135deg, #1a1d27 0%, #2d1b69 100%);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+  }
+  .header h1 {
+    font-size: 24px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #a29bfe, #fd79a8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  .header .subtitle { color: var(--text-dim); font-size: 14px; }
+  .header .total-input {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    font-size: 20px;
+  }
+  .header .total-input label { color: var(--text-dim); }
+  .header .total-input input {
+    width: 140px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--accent-light);
+    font-size: 22px;
+    font-weight: 700;
+    text-align: center;
+    padding: 6px 12px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .header .total-input input:focus { border-color: var(--accent); }
+  .header .total-input span { color: var(--text-dim); font-size: 16px; }
+
+  /* Section */
+  .section {
+    margin-bottom: 24px;
+    background: var(--card);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s;
+  }
+  .section-header:hover { background: var(--card-hover); }
+  .section-header h2 {
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-header .badge {
+    font-size: 12px;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  .section-header .arrow {
+    transition: transform 0.3s;
+    color: var(--text-dim);
+  }
+  .section-header.open .arrow { transform: rotate(180deg); }
+  .section-body { padding: 0 20px 20px; }
+
+  /* Allocation row */
+  .alloc-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .alloc-row:last-child { border-bottom: none; }
+  .alloc-label {
+    flex: 1;
+    font-size: 14px;
+  }
+  .alloc-label small { color: var(--text-dim); display: block; font-size: 12px; }
+  .alloc-pct {
+    width: 80px;
+    text-align: right;
+  }
+  .alloc-pct input {
+    width: 60px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    font-size: 14px;
+    text-align: right;
+    padding: 4px 8px;
+    outline: none;
+  }
+  .alloc-pct input:focus { border-color: var(--accent); }
+  .alloc-amt {
+    width: 110px;
+    text-align: right;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--green);
+    font-variant-numeric: tabular-nums;
+  }
+  .alloc-bar {
+    width: 100px;
+    height: 6px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .alloc-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.4s ease;
+  }
+
+  /* ETF Table */
+  .etf-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .etf-table th {
+    text-align: left;
+    padding: 10px 8px;
+    color: var(--text-dim);
+    font-weight: 500;
+    font-size: 12px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: var(--card);
+  }
+  .etf-table th:last-child, .etf-table td:last-child { text-align: right; }
+  .etf-table td {
+    padding: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: middle;
+  }
+  .etf-table tr:hover td { background: rgba(255,255,255,0.03); }
+  .etf-code {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    color: var(--accent-light);
+    font-size: 12px;
+  }
+  .etf-amount {
+    font-weight: 600;
+    color: var(--green);
+    font-variant-numeric: tabular-nums;
+  }
+  .etf-reason {
+    color: var(--text-dim);
+    font-size: 12px;
+    line-height: 1.4;
+    max-width: 280px;
+  }
+  .etf-category {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .cat-attack { background: rgba(253,114,114,0.15); color: var(--red); }
+  .cat-defend { background: rgba(0,184,148,0.15); color: var(--green); }
+  .cat-satellite { background: rgba(116,185,255,0.15); color: var(--blue); }
+  .cat-hk { background: rgba(253,203,110,0.15); color: var(--orange); }
+  .cat-gold { background: rgba(253,203,110,0.15); color: var(--orange); }
+  .cat-cash { background: rgba(139,143,163,0.15); color: var(--text-dim); }
+  .cat-finance { background: rgba(129,236,236,0.15); color: var(--teal); }
+  .cat-insurance { background: rgba(253,121,168,0.15); color: var(--pink); }
+
+  /* Summary */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .summary-card {
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px;
+    padding: 14px;
+    text-align: center;
+  }
+  .summary-card .label { font-size: 12px; color: var(--text-dim); margin-bottom: 4px; }
+  .summary-card .value { font-size: 18px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .summary-card .sub { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+
+  /* Position multiplier */
+  .pos-mult {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(108,92,231,0.12);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-top: 4px;
+  }
+  .pos-mult input {
+    width: 50px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--accent-light);
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    padding: 2px 4px;
+    outline: none;
+  }
+  .pos-mult input:focus { border-color: var(--accent); }
+
+  /* Age adjustment */
+  .age-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    font-size: 14px;
+  }
+  .age-row label { color: var(--text-dim); min-width: 90px; }
+  .age-row input {
+    width: 70px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    font-size: 14px;
+    text-align: center;
+    padding: 4px 8px;
+    outline: none;
+  }
+  .age-row input:focus { border-color: var(--accent); }
+  .age-hint { color: var(--text-dim); font-size: 12px; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-dim);
+    font-size: 12px;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .etf-reason { display: none; }
+    .alloc-bar { display: none; }
+    .summary-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <!-- Header -->
+  <div class="header">
+    <h1>📊 财富地图 · 资产配置计算器</h1>
+    <div class="subtitle">3.20 日版 ｜ 马永谙掘金之道思享班专属</div>
+    <div class="total-input">
+      <label>总可投资资产</label>
+      <input type="number" id="totalAssets" value="300" min="1" step="1" oninput="recalc()">
+      <span>万元</span>
+    </div>
+  </div>
+
+  <!-- Summary -->
+  <div class="section">
+    <div class="section-header" onclick="toggleSection(this)">
+      <h2>📋 配置概览</h2>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="summary-grid" id="summaryGrid"></div>
+    </div>
+  </div>
+
+  <!-- Age adjustment -->
+  <div class="section">
+    <div class="section-header" onclick="toggleSection(this)">
+      <h2>🎂 年龄调整因子 <small style="color:var(--text-dim);font-size:12px">(可选)</small></h2>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="age-row">
+        <label>您的年龄</label>
+        <input type="number" id="userAge" value="" placeholder="留空则不调整" min="18" max="99" oninput="recalc()">
+        <span class="age-hint" id="ageHint">300万对应合理年龄：45岁</span>
+      </div>
+      <div class="age-row">
+        <label>年龄调整</label>
+        <span id="ageAdjust" style="color:var(--accent-light)">—</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Asset Allocation -->
+  <div class="section">
+    <div class="section-header open" onclick="toggleSection(this)">
+      <h2>🎯 大类资产配置 <small style="color:var(--text-dim);font-size:12px">(点击编辑比例)</small></h2>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="section-body" id="allocSection">
+      <div id="allocRows"></div>
+      <div style="margin-top:12px;font-size:12px;color:var(--text-dim)">
+        ⚠️ 比例合计应为 100%。实际比例来自图形图表，如需精确请对照原 PDF 调整。
+      </div>
+    </div>
+  </div>
+
+  <!-- A股 Detailed -->
+  <div class="section">
+    <div class="section-header" onclick="toggleSection(this)">
+      <h2>🇨🇳 A股 ETF 标的 <span class="badge" style="background:rgba(253,114,114,0.15);color:var(--red)">仓位 ×<span id="aPosLabel">0.9</span></span></h2>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="section-body">
+      <div style="margin-bottom:12px">
+        <span class="pos-mult">
+          A股仓位系数：<input type="number" id="aPosition" value="0.9" min="0" max="1" step="0.1" oninput="recalc()">
+        </span>
+      </div>
+      <table class="etf-table">
+        <thead>
+          <tr><th>板块</th><th>ETF</th><th>代码</th><th>建议金额</th></tr>
+        </thead>
+        <tbody id="aStockBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 港股 -->
+  <div class="section">
+    <div class="section-header" onclick="toggleSection(this)">
+      <h2>🇭🇰 港股 <span class="badge" style="background:rgba(253,203,110,0.15);color:var(--orange)">仓位 ×<span id="hkPosLabel">0.6</span></span></h2>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="section-body">
+      <div style="margin-bottom:12px">
+        <span class="pos-mult">
+          港股仓位系数：<input type="number" id="hkPosition" value="0.6" min="0" max="1" step="0.1" oninput="recalc()">
+        </span>
+      </div>
+      <table class="etf-table">
+        <thead>
+          <tr><th>板块</th><th>ETF</th><th>代码</th><th>建议金额</th></tr>
+        </thead>
+        <tbody id="hkStockBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Other Assets -->
+  <div class="section">
+    <div class="section-header" onclick="toggleSection(this)">
+      <h2>💰 其他资产配置详情</h2>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="section-body">
+      <table class="etf-table">
+        <thead>
+          <tr><th>类别</th><th>产品</th><th>说明</th><th>建议金额</th></tr>
+        </thead>
+        <tbody id="otherBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Notes -->
+  <div class="section">
+    <div class="section-header" onclick="toggleSection(this)">
+      <h2>📝 投入方式 & 注意事项</h2>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="section-body" style="font-size:13px;color:var(--text-dim);line-height:1.8">
+      <p><strong style="color:var(--text)">即时定投（三笔法）：</strong>差额资金平均分 3 笔，每周 1 笔，3 周投完</p>
+      <p><strong style="color:var(--text)">低吸定投：</strong>每次下跌投入 1 笔，共 3 笔。连续跌超 1 周则每周 1 笔</p>
+      <p><strong style="color:var(--text)">减仓：</strong>一次卖掉，不拖泥带水</p>
+      <p style="margin-top:8px;color:var(--orange)">⚠️ 本工具仅供学习参考，非投资建议。大类资产比例来自图形图表，如与原文有差异请以 PDF 为准。</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    财富地图 3.20 版 · 工具自动生成 · 仅供内部学习
+  </div>
+</div>
+
+<script>
+// ============ DATA ============
+
+// 大类资产默认比例 (300万档)
+// NOTE: These are estimated from text descriptions. Adjust via UI to match PDF charts exactly.
+const defaultAlloc = [
+  { id: 'cash',      name: '现金/货币',    pct: 5,   cat: 'cat-cash',     icon: '💵' },
+  { id: 'finance',   name: '理财/固收',    pct: 10,  cat: 'cat-finance',  icon: '🏦' },
+  { id: 'astock',    name: 'A股投资',      pct: 45,  cat: 'cat-attack',   icon: '📈' },
+  { id: 'hkstock',   name: '港股投资',     pct: 15,  cat: 'cat-hk',       icon: '🇭🇰' },
+  { id: 'gold',      name: '黄金',        pct: 12,  cat: 'cat-gold',     icon: '🥇' },
+  { id: 'reits',     name: 'REITs/房产',   pct: 5,   cat: 'cat-finance',  icon: '🏠' },
+  { id: 'insurance', name: '保险',        pct: 3,   cat: 'cat-insurance', icon: '🛡️' },
+  { id: 'alt',       name: '另类/其他',    pct: 5,   cat: 'cat-satellite', icon: '💎' },
+];
+
+// A股 ETF 标的 —— 按子账户分配权重
+// 权重: 高=6, 中=3, 低=1 (总和归一化)
+const aStockETFs = [
+  // 核心-进攻
+  { name: '科创芯片',   code: '588200', cat: '核心-进攻', cls: 'cat-attack', weight: 6, reason: '2026 AI应用爆发年，硬件需求持续增长' },
+  { name: '通信',       code: '515880', cat: '核心-进攻', cls: 'cat-attack', weight: 6, reason: '2026 AI应用爆发年，硬件需求持续增长' },
+  { name: '计算机',     code: '159998', cat: '核心-进攻', cls: 'cat-attack', weight: 6, reason: '2026年是AI应用的爆发年' },
+  { name: '机器人',     code: '159530', cat: '核心-进攻', cls: 'cat-attack', weight: 6, reason: '2026年是量产元年' },
+  { name: '消费电子',   code: '159732', cat: '核心-进攻', cls: 'cat-attack', weight: 3, reason: '2026年是AI应用的爆发年' },
+  { name: '港股创新药', code: '513120', cat: '核心-进攻', cls: 'cat-attack', weight: 6, reason: '中国FIC新药数量世界第二，研发速度世界第一' },
+  { name: '电池',       code: '159755', cat: '核心-进攻', cls: 'cat-attack', weight: 3, reason: '2026储能需求旺盛，固态电池验证阶段' },
+  { name: '光伏',       code: '515790', cat: '核心-进攻', cls: 'cat-attack', weight: 3, reason: '十五五电网投资加码，太空光伏想象空间' },
+  { name: '有色金属',   code: '512400', cat: '核心-进攻', cls: 'cat-attack', weight: 3, reason: '美元信用走弱，G2时代增持贵金属，工业金属需求增长' },
+  { name: '机械工程',   code: '560280', cat: '核心-进攻', cls: 'cat-attack', weight: 1, reason: '中国高端制造出海逻辑强化' },
+  { name: '化工',       code: '159870', cat: '核心-进攻', cls: 'cat-attack', weight: 1, reason: 'PPI持续修复，顺周期涨价扩散到化工' },
+  // 核心-防守
+  { name: '证券保险',   code: '512070', cat: '核心-防守', cls: 'cat-defend', weight: 6, reason: '业绩好、估值低，中长期配置价值上升' },
+  { name: '红利低波',   code: '512890', cat: '核心-防守', cls: 'cat-defend', weight: 6, reason: '低波动稳定派息，中长期优质品种' },
+  { name: '自由现金流', code: '159201', cat: '核心-防守', cls: 'cat-defend', weight: 3, reason: '自由现金流增长趋势稳定，回撤可控' },
+  { name: '消费龙头',   code: '159928', cat: '核心-防守', cls: 'cat-defend', weight: 3, reason: '内需政策加码预期' },
+  { name: '家电',       code: '159996', cat: '核心-防守', cls: 'cat-defend', weight: 1, reason: '被忽视的红利行业，兼具成长性' },
+  { name: '电力',       code: '159611', cat: '核心-防守', cls: 'cat-defend', weight: 1, reason: '长期走势稳健，防御品种' },
+  { name: '可转债',     code: '511380', cat: '核心-防守', cls: 'cat-defend', weight: 1, reason: '跟随牛市上涨，回撤可控，短期偏高估' },
+  // 卫星
+  { name: '航天',       code: '159206', cat: '卫星',      cls: 'cat-satellite', weight: 3, reason: '中国商业航天元年，充分调整后配置' },
+  { name: '军工',       code: '512710', cat: '卫星',      cls: 'cat-satellite', weight: 3, reason: 'G2背景下军贸持续看好' },
+  { name: '旅游',       code: '159766', cat: '卫星',      cls: 'cat-satellite', weight: 1, reason: '消费K型分化+海外来华需求' },
+  { name: '传媒',       code: '512980', cat: '卫星',      cls: 'cat-satellite', weight: 1, reason: '2026年是AI应用的爆发年' },
+  { name: '游戏',       code: '159869', cat: '卫星',      cls: 'cat-satellite', weight: 1, reason: '2026年是AI应用的爆发年' },
+  { name: '软件',       code: '159852', cat: '卫星',      cls: 'cat-satellite', weight: 1, reason: '2026年是AI应用的爆发年' },
+  { name: '钢铁',       code: '515210', cat: '卫星',      cls: 'cat-satellite', weight: 1, reason: 'PPI修复，顺周期涨价扩散' },
+  { name: '农业',       code: '159825', cat: '卫星',      cls: 'cat-satellite', weight: 1, reason: 'PPI修复，顺周期涨价扩散' },
+  { name: '医疗器械',   code: '159883', cat: '卫星',      cls: 'cat-satellite', weight: 1, reason: '业绩见底，脑机接口题材有机会' },
+  { name: '工业母机',   code: '159667', cat: '卫星',      cls: 'cat-satellite', weight: 1, reason: '高端制造出口持续强势' },
+  { name: '电网设备',   code: '159326', cat: '卫星',      cls: 'cat-satellite', weight: 1, reason: '十五五电网设备投资加速' },
+];
+
+// 港股标的
+const hkStockETFs = [
+  { name: '港股创新药', code: '513120', cat: '港股核心',   cls: 'cat-hk', weight: 6, reason: '中国FIC创新药全球领先' },
+  { name: '港股科技',   code: '513130', cat: '港股核心',   cls: 'cat-hk', weight: 3, reason: 'AI应用+估值修复' },
+  { name: '港股红利',   code: '513530', cat: '港股防守',   cls: 'cat-hk', weight: 1, reason: '高股息防御品种' },
+];
+
+// 其他资产产品
+const otherAssets = [
+  { cat: '现金', product: '余额宝/银行活期', desc: '留 2 成 A股仓位现金，随时抄底', allocId: 'cash' },
+  { cat: '理财', product: '稳健组合/银行理财', desc: '参考马老师第18期闭门课', allocId: 'finance' },
+  { cat: '黄金', product: '黄金ETF', desc: '普通人最优投资方式', allocId: 'gold' },
+  { cat: 'REITs', product: '暂归理财（市场不适合）', desc: '现阶段REITS未到配置时机', allocId: 'reits' },
+  { cat: '保险', product: '纯保障险（意外/医疗）', desc: '未来20年保障期总支出，年化约1.5万/年', allocId: 'insurance' },
+];
+
+// 年龄-资金量对应表
+const ageMap = [
+  { amount: 10,   age: 28 },
+  { amount: 50,   age: 35 },
+  { amount: 100,  age: 40 },
+  { amount: 300,  age: 45 },
+  { amount: 800,  age: 50 },
+  { amount: 2000, age: 55 },
+  { amount: 5000, age: 57 },
+];
+
+// ============ STATE ============
+let alloc = JSON.parse(JSON.stringify(defaultAlloc));
+
+// ============ FUNCTIONS ============
+
+function getReasonableAge(amount) {
+  if (amount <= ageMap[0].amount) return ageMap[0].age;
+  if (amount >= ageMap[ageMap.length-1].amount) return ageMap[ageMap.length-1].age;
+  for (let i = 0; i < ageMap.length - 1; i++) {
+    if (amount >= ageMap[i].amount && amount <= ageMap[i+1].amount) {
+      const ratio = (amount - ageMap[i].amount) / (ageMap[i+1].amount - ageMap[i].amount);
+      return Math.round(ageMap[i].age + ratio * (ageMap[i+1].age - ageMap[i].age));
+    }
+  }
+  return 45;
+}
+
+function fmt(v) {
+  if (v >= 10000) return (v/10000).toFixed(1) + '万';
+  if (v >= 1000) return v.toFixed(0);
+  if (v >= 100) return v.toFixed(0);
+  return v.toFixed(1);
+}
+
+function fmtYuan(v) {
+  // v is in 万元, output formatted
+  if (v >= 1) return v.toFixed(2) + ' 万';
+  return (v * 10000).toFixed(0) + ' 元';
+}
+
+function toggleSection(header) {
+  header.classList.toggle('open');
+  const body = header.nextElementSibling;
+  body.style.display = header.classList.contains('open') ? '' : 'none';
+}
+
+function recalc() {
+  const total = parseFloat(document.getElementById('totalAssets').value) || 300;
+  const aPos = parseFloat(document.getElementById('aPosition').value) || 0.9;
+  const hkPos = parseFloat(document.getElementById('hkPosition').value) || 0.6;
+  const userAge = document.getElementById('userAge').value;
+  
+  document.getElementById('aPosLabel').textContent = aPos.toFixed(1);
+  document.getElementById('hkPosLabel').textContent = hkPos.toFixed(1);
+  
+  // Age adjustment
+  const reasonableAge = getReasonableAge(total);
+  document.getElementById('ageHint').textContent = `${total}万对应合理年龄：${reasonableAge}岁`;
+  let ageAdj = 0;
+  if (userAge) {
+    ageAdj = Math.max(-10, Math.min(10, reasonableAge - parseInt(userAge)));
+    document.getElementById('ageAdjust').textContent = 
+      ageAdj > 0 ? `投资 +${ageAdj}% / 理财 -${ageAdj}%` :
+      ageAdj < 0 ? `投资 ${ageAdj}% / 理财 +${Math.abs(ageAdj)}%` : '无需调整';
+  } else {
+    document.getElementById('ageAdjust').textContent = '—';
+  }
+  
+  // Read allocation percentages from inputs
+  alloc.forEach(a => {
+    const input = document.getElementById('pct_' + a.id);
+    if (input) a.pct = parseFloat(input.value) || 0;
+  });
+  
+  // Apply age adjustment to investment categories
+  const adjAlloc = alloc.map(a => {
+    let p = a.pct;
+    if (['astock', 'hkstock', 'gold', 'alt'].includes(a.id)) {
+      p += ageAdj;
+    } else if (a.id === 'finance') {
+      p -= ageAdj;
+    }
+    return { ...a, adjPct: Math.max(0, p) };
+  });
+  
+  const totalPct = adjAlloc.reduce((s, a) => s + a.adjPct, 0);
+  
+  // Render allocation rows
+  let allocHTML = '';
+  const colors = { cash: '#8b8fa3', finance: '#81ecec', astock: '#fd7272', hkstock: '#fdcb6e', gold: '#fdcb6e', reits: '#81ecec', insurance: '#fd79a8', alt: '#74b9ff' };
+  adjAlloc.forEach(a => {
+    const amount = total * a.adjPct / 100;
+    allocHTML += `
+      <div class="alloc-row">
+        <div class="alloc-label">${a.icon} ${a.name}</div>
+        <div class="alloc-pct"><input type="number" id="pct_${a.id}" value="${a.pct}" min="0" max="100" step="0.5" oninput="recalc()"> %</div>
+        <div class="alloc-amt">${fmtYuan(amount)}</div>
+        <div class="alloc-bar"><div class="alloc-bar-fill" style="width:${totalPct? (a.adjPct/totalPct*100):0}%;background:${colors[a.id]||'#6c5ce7'}"></div></div>
+      </div>`;
+  });
+  document.getElementById('allocRows').innerHTML = allocHTML;
+  
+  // Summary
+  const investTotal = adjAlloc.filter(a => ['astock','hkstock','gold','alt'].includes(a.id)).reduce((s,a) => s + a.adjPct, 0);
+  const safeTotal = adjAlloc.filter(a => ['cash','finance','reits','insurance'].includes(a.id)).reduce((s,a) => s + a.adjPct, 0);
+  document.getElementById('summaryGrid').innerHTML = `
+    <div class="summary-card"><div class="label">总资产</div><div class="value" style="color:var(--accent-light)">${total}万</div></div>
+    <div class="summary-card"><div class="label">投资类</div><div class="value" style="color:var(--red)">${investTotal.toFixed(1)}%</div><div class="sub">${fmtYuan(total*investTotal/100)}</div></div>
+    <div class="summary-card"><div class="label">稳健类</div><div class="value" style="color:var(--green)">${safeTotal.toFixed(1)}%</div><div class="sub">${fmtYuan(total*safeTotal/100)}</div></div>
+    <div class="summary-card"><div class="label">A股仓位</div><div class="value" style="color:var(--orange)">${aPos*100}%</div><div class="sub">实际约 ${(aPos*0.85*100).toFixed(0)}% 仓</div></div>
+    <div class="summary-card"><div class="label">港股仓位</div><div class="value" style="color:var(--orange)">${hkPos*100}%</div><div class="sub">${fmtYuan(total*(adjAlloc.find(a=>a.id==='hkstock')?.adjPct||0)/100*hkPos)}</div></div>
+    <div class="summary-card"><div class="label">比例合计</div><div class="value" style="color:${Math.abs(totalPct-100)<0.5?'var(--green)':'var(--red)'}">${totalPct.toFixed(1)}%</div></div>
+  `;
+  
+  // A股 ETF table
+  const aStockTotal = total * (adjAlloc.find(a => a.id === 'astock')?.adjPct || 0) / 100;
+  const aStockInvest = aStockTotal * aPos; // actual investment (position * total)
+  
+  // Sub-allocate by category groups
+  const attackETFs = aStockETFs.filter(e => e.cat === '核心-进攻');
+  const defendETFs = aStockETFs.filter(e => e.cat === '核心-防守');
+  const satelliteETFs = aStockETFs.filter(e => e.cat === '卫星');
+  
+  const attackWeightSum = attackETFs.reduce((s,e) => s + e.weight, 0);
+  const defendWeightSum = defendETFs.reduce((s,e) => s + e.weight, 0);
+  const satelliteWeightSum = satelliteETFs.reduce((s,e) => s + e.weight, 0);
+  
+  // Attack ~60%, Defend ~30%, Satellite ~10% of A-stock investment
+  const attackAlloc = aStockInvest * 0.60;
+  const defendAlloc = aStockInvest * 0.30;
+  const satelliteAlloc = aStockInvest * 0.10;
+  
+  let aHTML = '';
+  const renderGroup = (etfs, groupAlloc, weightSum) => {
+    let html = '';
+    etfs.forEach(e => {
+      const amount = groupAlloc * e.weight / weightSum;
+      html += `<tr>
+        <td><span class="etf-category ${e.cls}">${e.cat}</span></td>
+        <td>${e.name}</td>
+        <td class="etf-code">${e.code}</td>
+        <td class="etf-amount">${fmtYuan(amount)}</td>
+      </tr>`;
+    });
+    return html;
+  };
+  
+  aHTML += renderGroup(attackETFs, attackAlloc, attackWeightSum);
+  aHTML += renderGroup(defendETFs, defendAlloc, defendWeightSum);
+  aHTML += renderGroup(satelliteETFs, satelliteAlloc, satelliteWeightSum);
+  
+  // Cash row
+  const aCash = aStockTotal * (1 - aPos);
+  aHTML += `<tr style="color:var(--text-dim)">
+    <td><span class="etf-category cat-cash">现金</span></td>
+    <td>余额宝/活期</td>
+    <td class="etf-code">—</td>
+    <td class="etf-amount" style="color:var(--text-dim)">${fmtYuan(aCash)}</td>
+  </tr>`;
+  
+  document.getElementById('aStockBody').innerHTML = aHTML;
+  
+  // 港股 ETF table
+  const hkTotal = total * (adjAlloc.find(a => a.id === 'hkstock')?.adjPct || 0) / 100;
+  const hkInvest = hkTotal * hkPos;
+  const hkWeightSum = hkStockETFs.reduce((s,e) => s + e.weight, 0);
+  let hkHTML = '';
+  hkStockETFs.forEach(e => {
+    const amount = hkInvest * e.weight / hkWeightSum;
+    hkHTML += `<tr>
+      <td><span class="etf-category ${e.cls}">${e.cat}</span></td>
+      <td>${e.name}</td>
+      <td class="etf-code">${e.code}</td>
+      <td class="etf-amount">${fmtYuan(amount)}</td>
+    </tr>`;
+  });
+  // HK cash
+  const hkCash = hkTotal * (1 - hkPos);
+  hkHTML += `<tr style="color:var(--text-dim)">
+    <td><span class="etf-category cat-cash">现金</span></td>
+    <td>港股现金</td>
+    <td class="etf-code">—</td>
+    <td class="etf-amount" style="color:var(--text-dim)">${fmtYuan(hkCash)}</td>
+  </tr>`;
+  document.getElementById('hkStockBody').innerHTML = hkHTML;
+  
+  // Other assets table
+  let oHTML = '';
+  otherAssets.forEach(o => {
+    const a = adjAlloc.find(x => x.id === o.allocId);
+    const amount = total * (a?.adjPct || 0) / 100;
+    oHTML += `<tr>
+      <td><span class="etf-category cat-finance">${o.cat}</span></td>
+      <td>${o.product}</td>
+      <td class="etf-reason">${o.desc}</td>
+      <td class="etf-amount">${fmtYuan(amount)}</td>
+    </tr>`;
+  });
+  document.getElementById('otherBody').innerHTML = oHTML;
+}
+
+// Init
+recalc();
+</script>
+</body>
+</html>

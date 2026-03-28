@@ -1,0 +1,33 @@
+{
+  "title": "每日市场分析报告",
+  "date": "2026年03月25日",
+  "sections": [],
+  "overview": {
+    "date": "2026-03-25",
+    "indices": [
+      {
+        "name": "上证指数",
+        "close": 3931.84,
+        "change": 1.3,
+        "volume": "688343626"
+      },
+      {
+        "name": "深证成指",
+        "close": 13801.0,
+        "change": 1.95,
+        "volume": "723433703"
+      },
+      {
+        "name": "创业板指",
+        "close": 3316.97,
+        "change": 2.01,
+        "volume": "211728529"
+      }
+    ],
+    "summary": ""
+  },
+  "top_sectors": [],
+  "bottom_sectors": [],
+  "fund_flow": {},
+  "north_flow": null
+}

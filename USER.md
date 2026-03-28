@@ -1,18 +1,18 @@
 # USER.md - About Your Human
 
-- **Name:** _(待确认)_
+- **Name:** hackwoman（飞书用户名）
 - **What to call them:** 主人
-- **Pronouns:** _(待确认)_
+- **Pronouns:** _(待观察，目前用"你")_
 - **Timezone:** Asia/Shanghai (GMT+8)
 - **Notes:** 飞书用户名 hackwoman，GitHub 也在用这个用户名
 
 ## Context
 
-- 有飞书机器人，用于群聊和私聊
-- 对 AI 能力很感兴趣，希望用 AI 提升办公效率
-- 正在搭建 OpenClaw 工作环境，包括编程、办公、数据分析等能力
 - 技术能力不错，愿意折腾和配置系统
+- 正在搭建 OpenClaw 工作环境，包括编程、办公、数据分析等能力
+- 通过 MiMo 平台 + OpenRouter 接入免费模型
+- 飞书是主要通讯渠道，用于群聊和私聊
 
 ---
 
-_持续了解中..._
+_更新于 2026-03-26_

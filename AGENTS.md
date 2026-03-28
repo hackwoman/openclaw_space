@@ -210,3 +210,36 @@ The goal: Be helpful without being annoying. Check in a few times a day, do usef
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.
+
+## 开发工作流 - PIV 循环
+
+**所有开发任务必须遵循 PIV 循环，严格按顺序执行。**
+
+详见 `WORKFLOW.md`，计划模板在 `PLAN_TEMPLATE.md`。
+
+### PIV 三阶段
+
+1. **Prime（加载上下文）** — 先搞懂项目现状再动手
+2. **Plan（规划实现）** — 写详细计划，**不写代码**
+3. **Validate（验证）** — 跑 lint + 测试 + 构建 + 代码审查
+
+### Commit 规范
+
+```
+<tag>: <简短描述>
+```
+标签：feat / fix / docs / style / refactor / perf / test / chore / config
+
+### 计划文件
+
+- 位置：`.plans/{YYYY-MM-DD}-{kebab-case-name}.md`
+- 模板：`PLAN_TEMPLATE.md`
+- 每个任务必须有可执行的验证命令
+
+### 流程红线
+
+1. 不跳过 Prime — 哪怕"看起来简单"
+2. Plan 阶段不写代码
+3. Validate 所有命令必须通过
+4. 不批量提交
+5. 不确定就问
